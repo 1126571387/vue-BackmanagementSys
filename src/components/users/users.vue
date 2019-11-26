@@ -1,13 +1,7 @@
 <template>
   <el-card class="box-card">
     <!-- 面包屑导航条 -->
-    <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>用户管理</el-breadcrumb-item>
-      <el-breadcrumb-item>用户列表</el-breadcrumb-item>
-    </el-breadcrumb>
-
-
+     <MyBread level1="用户管理" level2="用户列表"></MyBread>
     <el-row class="searchRow">
        <el-col>
           <el-input 
@@ -235,12 +229,10 @@ export default {
      //请求列表数据
    async  getUsersList () {
     
-    //因为接口文档需要有token才可以访问接口数据，配置请求头
-    const AUTH_TOKEN = localStorage.getItem('token')
-    this.$http.defaults.headers.common['Authorization'] = AUTH_TOKEN
-    
-    console.log('token',AUTH_TOKEN)
-
+    // //因为接口文档需要有token才可以访问接口数据，配置请求头
+    // const AUTH_TOKEN = localStorage.getItem('token')
+    // this.$http.defaults.headers.common['Authorization'] = AUTH_TOKEN
+  
     const res = await this.$http.get(
       `users?query=${this.query}&pagenum=${this.pagenum}&pagesize=${this.pagesize}`
     )

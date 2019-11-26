@@ -3,10 +3,12 @@ import Router from 'vue-router'
 import Login from '../components/login/login.vue'
 import Home from '../components/home/home.vue'
 import Users from '../components/users/users.vue'
+import Right from '../components/rights/right.vue'
+import Roles from '../components/rights/role.vue'
 
 Vue.use(Router)
 
-export default new Router({
+ const router= new Router({
   routes: [
     {
     path: '/login',
@@ -22,8 +24,49 @@ export default new Router({
           path: '/users',
           name: 'users',
           component: Users
-      }]
+      },
+      {
+          path:'/rights',
+          name:'right',
+          component:Right
+      },
+      {
+        path:'/roles',
+        name:'roles',
+        component:Roles
+    },]
     },
 
   ]
 })
+
+export default router
+
+// router.beforeEach((to, from, next) => {
+//   console.log('to',to)
+//    console.log('from',from)
+//   const token =localStorage.getItem("token")
+//   console.log("token",token)
+//   console.log("this",this)
+
+//   if(to.path==="/login"){
+//     //如果去的是登录页面即跳转到登录页面
+//     next()
+//   }else{
+//     //如果去的不是登录页面，先判断是不是有token
+//     const token =localStorage.getItem('token')
+//     if(!token){
+//       // this.$message.warnning("请先登录")
+//       // this.$router.push({name:login})
+//       Message.warnning("请先登录")
+//       router.push({
+//         name:'login'
+//       })
+//       return
+//     }
+   
+//   //如果有token  -》next
+//   next()
+//   }
+
+// })
