@@ -9,7 +9,9 @@ import GoodsList from '../components/goods/goodslist.vue'
 import GoodsAdd from '../components/goods/goodsadd.vue'
 import CateParams from '../components/goods/cateparams.vue'
 import GoodsCate from '../components/goods/goodscate.vue'
-
+import Order from '../components/order/order.vue'
+import Reports from '../components/reports/reports.vue'
+// import { Message } from 'element-ui';
 Vue.use(Router)
 
  const router= new Router({
@@ -58,7 +60,18 @@ Vue.use(Router)
           path:'/categories',
           name:'categories',
           component:GoodsCate  
-        }]
+        },
+        {
+          path:'/orders',
+          name:'orders',
+          component:Order  
+        },
+        {
+          path:'/reports',
+          name:'reports',
+          component:Reports  
+        },
+      ]
     },
 
   ]
@@ -82,7 +95,7 @@ router.beforeEach((to, from, next) => {
     if(!token){
       // this.$message.warnning("请先登录")
       // this.$router.push({name:login})
-      Message.warnning("请先登录")
+      // Message.warnning("请先登录")
       router.push({
         name:'login'
       })
